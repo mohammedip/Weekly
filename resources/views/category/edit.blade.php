@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-
-   
-    </head>
-    <body class="bg-gray-100 p-6">
-        <div class="container mx-auto">
+<x-app-layout>
+        <div class="container mx-auto mt-10">
             <div class="flex justify-center">
                 <div class="w-full md:w-3/4 lg:w-1/2">
                     <div class="bg-white border border-gray-900 shadow-lg rounded-lg p-6">
@@ -50,5 +35,4 @@
                 </div>
             </div>
         </div>
-    </body>
-</html>
+</x-app-layout>

@@ -32,8 +32,8 @@ class Annonce extends Model
         return $this->belongsTo(Category::class);
     }
 
-    // public function commentaires()
-    // {
-    //     return $this->hasMany(Comment::class);
-    // }
+    public function commentaires()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

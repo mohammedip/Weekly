@@ -28,7 +28,9 @@ class CommentController extends Controller
      */
     public function store(CommentRequest $request)
     {
-        //
+        Comment::create(array_merge($request->validated(), [ 'user_id' => auth()->id() ]));
+
+        return redirect()->back()->with('status','Comment created successfully');
     }
 
     /**
@@ -60,6 +62,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+
+        return redirect()->back()->with('status','Annonce deleted successfully');
     }
 }

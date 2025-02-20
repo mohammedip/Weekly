@@ -26,7 +26,6 @@ class AnnonceRequest extends FormRequest
             'description'=>'required|string|max:255',
             'prix'=>'required|string|max:255',
             'image'=>'required|string|max:255',
-            'user_id'=>'required|string|max:255',
             'categorie_id'=>'required|string|max:255',
             'status'=>'required|string|max:255',
         ];

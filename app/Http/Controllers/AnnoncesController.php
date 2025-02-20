@@ -26,8 +26,7 @@ class AnnoncesController extends Controller
     public function create()
     {
         $categories = Category::all();
-        $users = User::all();
-        return view('annonce.create' , compact('categories','users'));
+        return view('annonce.create' , compact('categories'));
     }
 
     /**
@@ -36,7 +35,7 @@ class AnnoncesController extends Controller
     public function store(AnnonceRequest $request)
     {
 
-        Annonce::create($request->validated());
+        Annonce::create(array_merge($request->validated(), [ 'user_id' => auth()->id() ]));
 
         return redirect('/annonce')->with('status','Annonce created successfully');
     }
@@ -44,40 +43,38 @@ class AnnoncesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Annonce $annonces)
+    public function show(Annonce $annonce)
     {
-        return view('annonce.show' , compact('annonces'));
+        $annonce->load('user');
+        $annonce->load('categorie');
+        return view('annonce.show' , compact('annonce'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Annonce $annonces)
+    public function edit(Annonce $annonce)
     {
         $categories = Category::all();
-        $users = User::all();
-        return view('annonce.edit' , compact('annonces','categories','users'));
+    
+        return view('annonce.edit' , compact('annonce','categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(AnnonceRequest $request, Annonces $annonces)
+    public function update(AnnonceRequest $request, Annonce $annonce)
     {
-        $annonces->update($request->validated());
-        $annonces->user()->associate(User::find($request->user_id));
-        $annonces->categorie()->associate(Category::find($request->categorie_id)); 
-        $annonces->save();
-
+        $annonce->update($request->validated());
         return redirect('/annonce')->with('status','Annonce updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Annonce $annonces)
+    public function destroy(Annonce $annonce)
     {
-        $annonces->delete();
+        $annonce->delete();
 
         return redirect('/annonce')->with('status','Annonce deleted successfully');
     }
