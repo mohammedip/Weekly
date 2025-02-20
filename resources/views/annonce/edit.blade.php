@@ -52,15 +52,6 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="status">Status</label>
-                                        <select name="status" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" required>
-                                            <option value="actif" {{ $annonce->status == 'actif' ? 'selected' : '' }}>Actif</option>
-                                            <option value="archive" {{ $annonce->status == 'archive' ? 'selected' : '' }}>Archivé</option>
-                                        </select>
-                                        @error('status') <span class="text-red-500">{{$message}}</span> @enderror
-                                    </div>
-
-                                    <div class="mb-3">
                                         <button type="submit" class="bg-green-500 text-white font-medium py-2 px-4 rounded hover:bg-green-600 transition">Update</button>
                                     </div>
                                 </form>

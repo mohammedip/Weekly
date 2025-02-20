@@ -3,13 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
 
-
 class Annonce extends Model
 {
+    use SoftDeletes; 
+
     protected $table = 'annonces';
 
     protected $fillable = [
@@ -21,6 +23,8 @@ class Annonce extends Model
         'categorie_id',
         'status',
     ];
+
+    protected $dates = ['deleted_at']; 
 
     public function user()
     {

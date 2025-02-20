@@ -21,6 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('category', CategoryController::class);
     Route::resource('annonce', AnnoncesController::class);
     Route::resource('comment', CommentController::class);
+    Route::get('/annonces/restore-all', [AnnoncesController::class, 'restoreAll'])->name('annonces.restoreAll');
+
 });
 
 require __DIR__.'/auth.php';

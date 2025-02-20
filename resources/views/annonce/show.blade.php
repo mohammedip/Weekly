@@ -29,9 +29,6 @@
                         <div class="mb-3">
                             <p><strong>Categorie :</strong> {{ $annonce->categorie->nom }}</p>
                         </div>
-                        <div class="mb-3">
-                            <p><strong>Status :</strong> {{ $annonce->status }}</p>
-                        </div>
                     </div>
 
                     <!-- Section Commentaires -->

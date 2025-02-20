@@ -35,7 +35,7 @@ class AnnoncesController extends Controller
     public function store(AnnonceRequest $request)
     {
 
-        Annonce::create(array_merge($request->validated(), [ 'user_id' => auth()->id() ]));
+        Annonce::create(array_merge($request->validated(), [ 'user_id' => auth()->id(),'status' => 'actif'  ]));
 
         return redirect('/annonce')->with('status','Annonce created successfully');
     }
@@ -74,8 +74,17 @@ class AnnoncesController extends Controller
      */
     public function destroy(Annonce $annonce)
     {
+        $annonce->update(['status' => 'archivé']);
         $annonce->delete();
 
         return redirect('/annonce')->with('status','Annonce deleted successfully');
     }
+
+    public function restoreAll()
+    {
+        Annonce::onlyTrashed()->restore();
+
+    return redirect('/annonce')->with('status', 'Annonce restored successfully');
+    }
+
 }
