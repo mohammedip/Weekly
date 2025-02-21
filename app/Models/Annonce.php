@@ -4,13 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Comment;
 
 class Annonce extends Model
 {
-    use SoftDeletes; 
+    use HasFactory, SoftDeletes;
 
     protected $table = 'annonces';
 
